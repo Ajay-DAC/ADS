@@ -1,0 +1,349 @@
+
+//Assignment 2 Q1
+public static void main(String [] args){
+  int i;
+  int j;
+  for (i=1; i<=3; i++){
+  
+   for( j=1; j<=i ; j++){
+    
+   System.out.print("*"+"  ");
+
+  }
+ System.out.println();
+   }
+  } 
+}
+
+*/
+
+class pattern{
+
+ public static void main(String [] args){
+  int i;
+  int j;
+  for (i=1; i<=5; i++){
+  
+   for( j=1; j<=i ; j++){
+    
+   System.out.print("*"+"   ");
+
+  }
+ System.out.println();
+   }
+  
+  } 
+}
+//-------------------------------------------------------------------------------------//
+//Assignment 2 Q2
+public class Duplicates {
+
+    static int rmDuplicates(int[] arr) {
+		
+        if (arr.length == 0) return 0;
+
+         int j =0;
+        for (int i = j+1; i < arr.length; i++) {
+            if (arr[i] != arr[j]) 
+                j++;
+			 	arr[j] = arr[i];
+		}
+      
+        return j+1; // i is the index of the last unique element
+    }
+
+
+    public static void main(String[] args) {
+        int[] arr = {1, 1, 1, 2};
+        int newlength = rmDuplicates(arr);
+        System.out.println("New length: "+newlength);
+
+        System.out.print("Updated array: ");
+        for (int i = 0; i < newlength; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
+//---------------------------------------------------------------------------------------------//
+Assignment 2 Q3
+class Array1{
+	static int insert(char arr[], int size, char key, int capacity)
+	{
+		if(size> capacity)
+		{
+			System.out.println("array is full");
+			return size;
+		}	
+			arr[size] = key;  // insertion
+			return size+1;
+			
+	}
+	static int search(char arr[], int size, char key)
+	{
+			for(int i=0;i<size;i++)
+			{
+				if (arr[i] == key)
+				{
+					return i;
+				}
+		}
+		  return -1;
+		  
+	}
+	static int delete(char arr[], int size, char key)
+	{
+	int pos = search(arr,size,key);
+		if(pos == -1)
+		{
+			System.out.println("not found");
+			return size;
+		}
+	// elemnt present  shift elemnt in array//
+	 for(int i =pos;i< size-1;i++)
+	 {
+		 arr[i]= arr[i+1];
+	 }	 
+	return size-1;
+	
+	}
+public static void main(String[] args){
+  char a1[] = new char[11];
+  int size = 11;
+  a1[0]= 'H';
+  a1[1]= 'e';
+  a1[2]= 'l';
+  a1[3]= 'l';
+  a1[4]= 'o';
+  a1[5]= ' ';
+  a1[6]= 'W';
+  a1[7]= 'o';
+  a1[8]= 'r';
+  a1[9]= 'l';
+  a1[10]= 'd';
+   for(int i=0;i< size; i++)
+   {
+   System.out.println(a1[i]+"  ");
+   }
+   //search//
+   char key=' ';
+   int pos = search(a1,size,key);
+   if(pos != -1)
+    System.out.println("Elment found");
+else
+	System.out.println(" Element not found");
+
+//----------delete------------------------
+		key =' ';
+		size = delete(a1,size,key);
+		System.out.println("After deletion");
+	for(int i=0;i<size;i++)
+		{
+			System.out.print(a1[i]+"");
+		}
+		System.out.println();
+}
+}
+//-----------------------------------------------------------------------------------------------//
+Assignment 2 Q4
+// reverse a number//
+class Stack2 {
+    private int max;
+    private int[] S1; // Array to store stack elements
+    private int top;
+
+    // Constructor to initialize stack
+    Stack2(int s) {
+        top = -1;
+        max = s;
+        S1 = new int[max]; 
+    }
+
+    // Push method 
+    public void push(int x) {
+        if (!isFull()) {
+            S1[++top] = x; // Increment top and add element
+        } else {
+            System.out.println("Stack is full. Push operation failed.");
+        }
+    }
+
+    // Pop method 
+    public int pop() {
+        if (!isEmpty()) {
+            return S1[top--]; // Return the top element and decrement top
+        } else {
+            System.out.println("Stack is empty. Pop operation failed.");
+            return -1; // Return -1
+        }
+    }
+
+    // Peek method to return the top element without removing it
+    public long peek() {
+        if (!isEmpty()) {
+            return S1[top];
+        } else {
+            System.out.println("Stack is empty. Peek operation failed.");
+            return -1; // Return -1 to indicate an error
+        }
+    }
+
+    // Method to check if the stack is empty
+    public boolean isEmpty() {
+        return (top == -1);
+    }
+
+    // Method to check if the stack is full
+    public boolean isFull() {
+        return (top >= (max - 1));
+    }
+
+    // Method to display the elements in the stack
+    public void display() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+        } else {
+            for (int i = 0; i <= top; i++) {
+                System.out.println(S1[i]);
+            }
+        }
+    }
+}
+
+class Stackapps {
+    
+    public static void reverse(StringBuffer str) {
+        int n = str.length();
+        Stack2 s1 = new Stack2(n); // Create a stack of the same size as the string
+
+        // Push each character of the string into the stack
+        for (int i = 0; i < n; i++) {
+            s1.push(str.charAt(i));
+        }
+
+        
+        for (int i = 0; i < n; i++) {
+            char ch = (char) s1.pop(); 
+            str.setCharAt(i, ch); 
+        }
+    }
+
+    public static void main(String args[]) {
+        StringBuffer s = new StringBuffer("hello");
+        reverse(s); // Reverse the string
+        System.out.println("Reverse of the string = " + s); 
+    }
+}
+//---------------------------------------------------------------------------------------------------------//
+Assignment 2 Q7
+// reverse a number//
+class Stack2 {
+    private int max;
+    private int[] S1; // Array to store stack elements
+    private int top;
+
+    // Constructor to initialize stack
+    Stack2(int s) {
+        top = -1;
+        max = s;
+        S1 = new int[max]; 
+    }
+
+    // Push method 
+    public void push(int x) {
+        if (!isFull()) {
+            S1[++top] = x; // Increment top and add element
+        } else {
+            System.out.println("Stack is full. Push operation failed.");
+        }
+    }
+
+    // Pop method 
+    public int pop() {
+        if (!isEmpty()) {
+            return S1[top--]; // Return the top element and decrement top
+        } else {
+            System.out.println("Stack is empty. Pop operation failed.");
+            return -1; // Return -1
+        }
+    }
+
+    // Peek method to return the top element without removing it
+    public long peek() {
+        if (!isEmpty()) {
+            return S1[top];
+        } else {
+            System.out.println("Stack is empty. Peek operation failed.");
+            return -1; // Return -1 to indicate an error
+        }
+    }
+
+    // Method to check if the stack is empty
+    public boolean isEmpty() {
+        return (top == -1);
+    }
+
+    // Method to check if the stack is full
+    public boolean isFull() {
+        return (top >= (max - 1));
+    }
+
+    // Method to display the elements in the stack
+    public void display() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+        } else {
+            for (int i = 0; i <= top; i++) {
+                System.out.println(S1[i]);
+            }
+        }
+    }
+}
+
+class Stackapps {
+    
+    public static void reverse(StringBuffer str) {
+        int n = str.length();
+        Stack2 s1 = new Stack2(n); // Create a stack of the same size as the string
+
+        // Push each character of the string into the stack
+        for (int i = 0; i < n; i++) {
+            s1.push(str.charAt(i));
+        }
+
+        
+        for (int i = 0; i < n; i++) {
+            char ch = (char) s1.pop(); 
+            str.setCharAt(i, ch); 
+        }
+    }
+
+    public static void main(String args[]) {
+        StringBuffer s = new StringBuffer("12345");
+        reverse(s); // Reverse the string
+        System.out.println("Reverse of the string = " + s); 
+    }
+}
+//----------------------------------------------------------------------------------------------------------------------//
+Assignment 2 Q9
+public class PalindromeString {
+
+    // if a string is a palindrome
+    public static boolean isReverse(String str) {
+        // Base case: If string is empty or one character, it's a palindrome
+        if (str.length() <= 1) return true;
+
+        // Check first and last char. are same
+        if (str.charAt(0) != str.charAt(str.length() - 1)) 
+		return false;
+
+        // Recursively check substring by removing first and last characters
+        return isReverse(str.substring(1, str.length() - 1));
+    }
+
+    public static void main(String[] args) {
+        
+        String str1= "madam";
+        boolean result = isReverse(str1);
+        System.out.println("Is \"" + str1 + "\" a palindrome? " + result);
+    }
+}
